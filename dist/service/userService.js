@@ -120,6 +120,7 @@ const binaryTree = async (req) => {
         }
         // Convert the array input into a binary tree structure
         const binaryTree = (0, binarytree_1.buildBinaryTreeFromArray)(tree);
+        console.log(JSON.stringify(binaryTree));
         const maxLeafPath = (0, binarytree_1.maxSumPathFromLeaf)(binaryTree);
         const maxAnyNodePath = (0, binarytree_1.maxSumPathAnyNode)(binaryTree);
         await calculator_1.default.create({

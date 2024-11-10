@@ -137,7 +137,14 @@ exports.userManagementValidation = {
             .exists({ checkFalsy: true })
             .withMessage("tree is required")
             .isArray()
-            .withMessage("tree Type Array"),
+            .withMessage("tree should be an array")
+            .custom((value) => {
+            // Ensure that every element in the array is either null or a number
+            if (!value.every((item) => item === null || typeof item === "number")) {
+                throw new Error("Each item in tree must be either null or a number");
+            }
+            return true;
+        }),
         (req, res, next) => {
             const errors = (0, express_validator_1.validationResult)(req);
             if (!errors.isEmpty())
