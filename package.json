@@ -8,9 +8,10 @@
     "test": "cross-env NODE_ENV=test nodemon",
     "dev": "cross-env NODE_ENV=development nodemon",
     "prod": "cross-env NODE_ENV=production nodemon",
-    "build": "rimraf dist && tsc",
+    "build": "npm install && tsc",
   "start": "node dist/app.js",
-    "jest": "jest"
+    "jest": "jest",
+    "vercel-build":"echo hello"
   },
   "repository": {
     "type": "git",
