@@ -1,7 +1,7 @@
 import rateLimit from "express-rate-limit";
 import { config } from "../config/configEnv";
 
-const RATE_LIMIT: any = config.RATE_LIMIT;
+const RATE_LIMIT: any = config?.RATE_LIMIT || "RATE_LIMIT";
 const timeFrame = 60 * 1000; // 1 min in milliseconds
 const messageData = {
   success: false,

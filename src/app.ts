@@ -11,9 +11,12 @@ import { swaggerDocs } from "./swaggerConfig/swagger";
 const swaggerUi = require("swagger-ui-express");
 
 const port = config?.PORT || 8010;
-const env = config.NODE_ENV;
+const env = config?.NODE_ENV || "development";
 export const app: Express = express();
-new ConnectDatabase(config.MONGO_URI_USER).connectDB(); // Calling db connection
+new ConnectDatabase(
+  config?.MONGO_URI_USER ||
+    "mongodb+srv://biswajitmateriallibrary:biswajit@cluster0546.ffxbwii.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0546"
+).connectDB(); // Calling db connection
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(express.json({ limit: "500mb" }));
