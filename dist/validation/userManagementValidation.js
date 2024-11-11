@@ -9,7 +9,7 @@ exports.userManagementValidation = {
         (0, express_validator_1.check)("authorization")
             .exists({ checkFalsy: true })
             .withMessage("Please Provide Your Token")
-            .customSanitizer((value) => value === null || value === void 0 ? void 0 : value.split(" ")[1])
+            .customSanitizer((value) => value?.split(" ")[1])
             .isJWT()
             .withMessage("token is not valid"),
         (req, res, next) => {
@@ -28,7 +28,7 @@ exports.userManagementValidation = {
         (0, express_validator_1.check)("authorization")
             .exists({ checkFalsy: true })
             .withMessage("Please Provide Your Token")
-            .customSanitizer((value) => value === null || value === void 0 ? void 0 : value.split(" ")[1])
+            .customSanitizer((value) => value?.split(" ")[1])
             .isJWT()
             .withMessage("token is not valid"),
         (0, express_validator_1.body)("oldPassword")
@@ -82,7 +82,7 @@ exports.userManagementValidation = {
         (0, express_validator_1.check)("authorization")
             .exists({ checkFalsy: true })
             .withMessage("Please Provide Your Token")
-            .customSanitizer((value) => value === null || value === void 0 ? void 0 : value.split(" ")[1])
+            .customSanitizer((value) => value?.split(" ")[1])
             .isJWT()
             .withMessage("token is not valid"),
         (0, express_validator_1.body)("search").optional({ checkFalsy: true }).trim(),
@@ -106,7 +106,7 @@ exports.userManagementValidation = {
         (0, express_validator_1.check)("authorization")
             .exists({ checkFalsy: true })
             .withMessage("Please Provide Your Token")
-            .customSanitizer((value) => value === null || value === void 0 ? void 0 : value.split(" ")[1])
+            .customSanitizer((value) => value?.split(" ")[1])
             .isJWT()
             .withMessage("token is not valid"),
         (0, express_validator_1.body)("input")
@@ -130,7 +130,7 @@ exports.userManagementValidation = {
         (0, express_validator_1.check)("authorization")
             .exists({ checkFalsy: true })
             .withMessage("Please Provide Your Token")
-            .customSanitizer((value) => value === null || value === void 0 ? void 0 : value.split(" ")[1])
+            .customSanitizer((value) => value?.split(" ")[1])
             .isJWT()
             .withMessage("token is not valid"),
         (0, express_validator_1.body)("tree")
@@ -161,7 +161,7 @@ exports.userManagementValidation = {
         (0, express_validator_1.check)("authorization")
             .exists({ checkFalsy: true })
             .withMessage("Please Provide Your Token")
-            .customSanitizer((value) => value === null || value === void 0 ? void 0 : value.split(" ")[1])
+            .customSanitizer((value) => value?.split(" ")[1])
             .isJWT()
             .withMessage("token is not valid"),
         (0, express_validator_1.body)("skip").optional().isInt({ min: 0, max: 10000 }),
@@ -246,7 +246,7 @@ exports.userManagementValidation = {
         (0, express_validator_1.check)("authorization")
             .exists({ checkFalsy: true })
             .withMessage("Please Provide Your Token")
-            .customSanitizer((value) => value === null || value === void 0 ? void 0 : value.split(" ")[1])
+            .customSanitizer((value) => value?.split(" ")[1])
             .isJWT()
             .withMessage("token is not valid"),
         (0, express_validator_1.body)("email")
@@ -346,7 +346,7 @@ exports.userManagementValidation = {
         (0, express_validator_1.check)("authorization")
             .exists({ checkFalsy: true })
             .withMessage("Please Provide Your Token")
-            .customSanitizer((value) => value === null || value === void 0 ? void 0 : value.split(" ")[1])
+            .customSanitizer((value) => value?.split(" ")[1])
             .isJWT()
             .withMessage("token is not valid"),
         (0, express_validator_1.body)("email")
@@ -396,7 +396,7 @@ exports.userManagementValidation = {
         (0, express_validator_1.check)("authorization")
             .exists({ checkFalsy: true })
             .withMessage("Please Provide Your Token")
-            .customSanitizer((value) => value === null || value === void 0 ? void 0 : value.split(" ")[1])
+            .customSanitizer((value) => value?.split(" ")[1])
             .isJWT()
             .withMessage("token is not valid"),
         (0, express_validator_1.body)("email")

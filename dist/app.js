@@ -14,10 +14,10 @@ const rateLimiter_1 = require("./middleware/rateLimiter");
 const allFileServicesRoute_1 = require("./routes/allFileServicesRoute");
 const swagger_1 = require("./swaggerConfig/swagger");
 const swaggerUi = require("swagger-ui-express");
-const port = (configEnv_1.config === null || configEnv_1.config === void 0 ? void 0 : configEnv_1.config.PORT) || 8010;
-const env = (configEnv_1.config === null || configEnv_1.config === void 0 ? void 0 : configEnv_1.config.NODE_ENV) || "development";
+const port = configEnv_1.config?.PORT || 8010;
+const env = configEnv_1.config?.NODE_ENV || "development";
 exports.app = (0, express_1.default)();
-new dbconfig_1.ConnectDatabase((configEnv_1.config === null || configEnv_1.config === void 0 ? void 0 : configEnv_1.config.MONGO_URI_USER) ||
+new dbconfig_1.ConnectDatabase(configEnv_1.config?.MONGO_URI_USER ||
     "mongodb+srv://biswajitmateriallibrary:biswajit@cluster0546.ffxbwii.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0546").connectDB(); // Calling db connection
 exports.app.use((0, helmet_1.default)());
 exports.app.use((0, morgan_1.default)("dev"));
