@@ -8,7 +8,7 @@ exports.baseValidation = {
         (0, express_validator_1.check)("authorization")
             .exists({ checkFalsy: true })
             .withMessage("Please Provide Your Token")
-            .customSanitizer((value) => value?.split(" ")[1])
+            .customSanitizer((value) => value === null || value === void 0 ? void 0 : value.split(" ")[1])
             .isJWT()
             .withMessage("token is not valid"),
         (req, res, next) => {

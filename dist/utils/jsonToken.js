@@ -27,7 +27,7 @@ exports.generateToken = void 0;
 const jwt = __importStar(require("jsonwebtoken"));
 const configEnv_1 = require("../config/configEnv");
 const generateToken = (payload, expiry = "15d") => {
-    return jwt.sign(payload, configEnv_1.config?.JWT_SECRET || "test", {
+    return jwt.sign(payload, (configEnv_1.config === null || configEnv_1.config === void 0 ? void 0 : configEnv_1.config.JWT_SECRET) || "test", {
         expiresIn: expiry,
     });
 };

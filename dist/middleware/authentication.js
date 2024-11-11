@@ -22,61 +22,74 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Auth = void 0;
 const jwt = __importStar(require("jsonwebtoken"));
 const configEnv_1 = require("../config/configEnv");
 const statusCodeResponse_1 = require("../utils/statusCodeResponse");
 class Auth {
-    async authentication(req, res, next) {
-        try {
-            let token;
-            if (req.headers.authorization) {
-                token = req.headers.authorization;
-                if (!token) {
+    authentication(req, res, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let token;
+                if (req.headers.authorization) {
+                    token = req.headers.authorization;
+                    if (!token) {
+                        throw new Error("Not Authorized, Token Failed ");
+                    }
+                    let decode;
+                    try {
+                        decode = jwt.verify(token, (configEnv_1.config === null || configEnv_1.config === void 0 ? void 0 : configEnv_1.config.JWT_SECRET) || "test");
+                    }
+                    catch (error) {
+                        decode = {};
+                    }
+                    if (!decode) {
+                        throw new Error("Not Authorized, Token Failed ");
+                    }
+                    req.user = decode;
+                    next();
+                }
+                else {
                     throw new Error("Not Authorized, Token Failed ");
                 }
-                let decode;
-                try {
-                    decode = jwt.verify(token, configEnv_1.config?.JWT_SECRET || "test");
-                }
-                catch (error) {
-                    decode = {};
-                }
-                if (!decode) {
-                    throw new Error("Not Authorized, Token Failed ");
-                }
-                req.user = decode;
-                next();
             }
-            else {
-                throw new Error("Not Authorized, Token Failed ");
+            catch (error) {
+                return (0, statusCodeResponse_1.sendResponse)(req, res, 200, {
+                    success: false,
+                    data: {},
+                    message: error.message,
+                });
             }
-        }
-        catch (error) {
-            return (0, statusCodeResponse_1.sendResponse)(req, res, 200, {
-                success: false,
-                data: {},
-                message: error.message,
-            });
-        }
+        });
     }
-    async authorization(req, res, next) {
-        try {
-            if (req.user.role === "admin") {
-                next();
+    authorization(req, res, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                if (req.user.role === "admin") {
+                    next();
+                }
+                else {
+                    throw new Error("Not Authorized, For api ");
+                }
             }
-            else {
-                throw new Error("Not Authorized, For api ");
+            catch (error) {
+                return (0, statusCodeResponse_1.sendResponse)(req, res, 200, {
+                    success: false,
+                    data: {},
+                    message: error.message,
+                });
             }
-        }
-        catch (error) {
-            return (0, statusCodeResponse_1.sendResponse)(req, res, 200, {
-                success: false,
-                data: {},
-                message: error.message,
-            });
-        }
+        });
     }
 }
 exports.Auth = Auth;

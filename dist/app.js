@@ -14,7 +14,7 @@ const rateLimiter_1 = require("./middleware/rateLimiter");
 const allFileServicesRoute_1 = require("./routes/allFileServicesRoute");
 const swagger_1 = require("./swaggerConfig/swagger");
 const swaggerUi = require("swagger-ui-express");
-const port = configEnv_1.config?.PORT || 8010;
+const port = (configEnv_1.config === null || configEnv_1.config === void 0 ? void 0 : configEnv_1.config.PORT) || 8010;
 const env = configEnv_1.config.NODE_ENV;
 exports.app = (0, express_1.default)();
 new dbconfig_1.ConnectDatabase(configEnv_1.config.MONGO_URI_USER).connectDB(); // Calling db connection

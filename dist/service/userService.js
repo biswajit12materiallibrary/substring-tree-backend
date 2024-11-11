@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -10,15 +19,15 @@ const jsonToken_1 = require("../utils/jsonToken");
 const substring_1 = require("../utils/substring");
 const binarytree_1 = require("../utils/binarytree");
 const calculator_1 = __importDefault(require("../model/calculator"));
-const createUser = async (req) => {
+const createUser = (req) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email, role, password } = req;
-        const existingUser = await userModel_1.default.findOne({ email });
+        const existingUser = yield userModel_1.default.findOne({ email });
         if (existingUser) {
             throw new Error("Email already exists");
         }
-        const hashedPassword = await bcrypt_1.default.hash(password, 10);
-        const createUser = await userModel_1.default.create({
+        const hashedPassword = yield bcrypt_1.default.hash(password, 10);
+        const createUser = yield userModel_1.default.create({
             password: hashedPassword,
             role: role || "user",
             email: email,
@@ -41,16 +50,16 @@ const createUser = async (req) => {
             statusCode: 404,
         };
     }
-};
+});
 exports.createUser = createUser;
-const login = async (req) => {
+const login = (req) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email, password } = req;
-        const existingUser = await userModel_1.default.findOne({ email, isDeleted: false });
+        const existingUser = yield userModel_1.default.findOne({ email, isDeleted: false });
         if (!existingUser) {
             throw new Error("Email does not exists");
         }
-        const isMatch = await bcrypt_1.default.compare(password, existingUser.password);
+        const isMatch = yield bcrypt_1.default.compare(password, existingUser.password);
         if (!isMatch) {
             throw new Error("Invalid Password");
         }
@@ -79,9 +88,9 @@ const login = async (req) => {
             statusCode: 404,
         };
     }
-};
+});
 exports.login = login;
-const substring = async (req) => {
+const substring = (req) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { input } = req.body;
         if (!input || typeof input !== "string") {
@@ -89,7 +98,7 @@ const substring = async (req) => {
         }
         const longestSubstring = (0, substring_1.findLongestSubstring)(input);
         const uniqueSubstrings = (0, substring_1.findUniqueSubstrings)(input);
-        await calculator_1.default.create({
+        yield calculator_1.default.create({
             userId: req.user.userId,
             input: input,
             result: { longestSubstring, uniqueSubstrings },
@@ -110,9 +119,9 @@ const substring = async (req) => {
             statusCode: 404,
         };
     }
-};
+});
 exports.substring = substring;
-const binaryTree = async (req) => {
+const binaryTree = (req) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { tree } = req.body;
         if (!tree || !Array.isArray(tree)) {
@@ -123,7 +132,7 @@ const binaryTree = async (req) => {
         console.log(JSON.stringify(binaryTree));
         const maxLeafPath = (0, binarytree_1.maxSumPathFromLeaf)(binaryTree);
         const maxAnyNodePath = (0, binarytree_1.maxSumPathAnyNode)(binaryTree);
-        await calculator_1.default.create({
+        yield calculator_1.default.create({
             userId: req.user.userId,
             input: tree,
             result: { maxLeafPath, maxAnyNodePath },
@@ -145,5 +154,5 @@ const binaryTree = async (req) => {
             statusCode: 404,
         };
     }
-};
+});
 exports.binaryTree = binaryTree;
