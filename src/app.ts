@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.options("*", cors());
 app.use(rateLimiter);
-
+//versel
 app.get("/", (req, res) => {
   console.log("backend running successfully");
   res.send("backend running successfully");
