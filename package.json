@@ -11,7 +11,7 @@
     "build": "npm install && tsc",
   "start": "node dist/app.js",
     "jest": "jest",
-    "vercel-build":"echo hello"
+    "vercel-build":"npm install && tsc "
   },
   "repository": {
     "type": "git",
