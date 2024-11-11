@@ -8,10 +8,10 @@
     "test": "cross-env NODE_ENV=test nodemon",
     "dev": "cross-env NODE_ENV=development nodemon",
     "prod": "cross-env NODE_ENV=production nodemon",
-    "build": "npm install && tsc --project . && node ./dist/app.js",
-    "test-build": "NODE_ENV=test tsc --project . && sudo cp -r ./src/assets/ ./dist/ && sudo chmod -R 777 ./dist/assets/",
-    "dev-build": "NODE_ENV=development tsc --project . && sudo cp -r ./src/assets/ ./dist/ && sudo chmod -R 777 ./dist/assets/",
-    "prod-build": "NODE_ENV=production tsc --project . && sudo cp -r ./src/assets/ ./dist/ && sudo chmod -R 777 ./dist/assets/",
+"start": "nodemon src/index.ts",
+    "build": "rimraf dist && tsc",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist",
     "jest": "jest"
   },
   "repository": {
