@@ -52,7 +52,8 @@
     "swagger-ui-express": "^5.0.1",
     "typeorm": "^0.3.16",
     "uuid": "^9.0.0",
-    "winston": "^3.8.2"
+    "winston": "^3.8.2",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",

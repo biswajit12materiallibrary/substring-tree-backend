@@ -64,10 +64,11 @@ class Auth {
                 }
             }
             catch (error) {
+                const err = error;
                 return (0, statusCodeResponse_1.sendResponse)(req, res, 200, {
                     success: false,
                     data: {},
-                    message: error.message,
+                    message: err.message,
                 });
             }
         });
@@ -83,10 +84,11 @@ class Auth {
                 }
             }
             catch (error) {
+                const err = error;
                 return (0, statusCodeResponse_1.sendResponse)(req, res, 200, {
                     success: false,
                     data: {},
-                    message: error.message,
+                    message: err.message,
                 });
             }
         });

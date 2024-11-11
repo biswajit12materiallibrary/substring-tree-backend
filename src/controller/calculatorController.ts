@@ -17,7 +17,7 @@ export class CalculatorControllerController {
         throw new Error(data?.message || "SomeThing Went Wrong");
       }
       return sendResponse(req, res, 200, data);
-    } catch (error) {
+    } catch (error: any) {
       return sendResponse(req, res, 200, {
         success: false,
         data: {},
@@ -34,7 +34,7 @@ export class CalculatorControllerController {
         throw new Error(data?.message || "SomeThing Went Wrong");
       }
       return sendResponse(req, res, 200, data);
-    } catch (error) {
+    } catch (error: any) {
       return sendResponse(req, res, 200, {
         success: false,
         data: {},
@@ -51,7 +51,7 @@ export class CalculatorControllerController {
         throw new Error(data?.message || "SomeThing Went Wrong");
       }
       return sendResponse(req, res, 200, data);
-    } catch (error) {
+    } catch (error: any) {
       return sendResponse(req, res, 200, {
         success: false,
         data: {},
@@ -68,7 +68,7 @@ export class CalculatorControllerController {
         throw new Error(data?.message || "SomeThing Went Wrong");
       }
       return sendResponse(req, res, 200, data);
-    } catch (error) {
+    } catch (error: any) {
       return sendResponse(req, res, 200, {
         success: false,
         data: {},

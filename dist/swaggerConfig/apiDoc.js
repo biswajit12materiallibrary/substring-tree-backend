@@ -1,3 +1,4 @@
+"use strict";
 /**
  * @swagger
  * /api/user/signup:

@@ -30,10 +30,12 @@ export class Auth {
         throw new Error("Not Authorized, Token Failed ");
       }
     } catch (error) {
+      const err = error as Error;
+
       return sendResponse(req, res, 200, {
         success: false,
         data: {},
-        message: error.message,
+        message: err.message,
       });
     }
   }
@@ -45,11 +47,13 @@ export class Auth {
       } else {
         throw new Error("Not Authorized, For api ");
       }
-    } catch (error) {
+    } catch (error: any) {
+      const err = error as Error;
+
       return sendResponse(req, res, 200, {
         success: false,
         data: {},
-        message: error.message,
+        message: err.message,
       });
     }
   }

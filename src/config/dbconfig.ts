@@ -13,7 +13,8 @@ export class ConnectDatabase {
 
       console.log(`MongoDB Connected`);
     } catch (error) {
-      console.error(`Error: ${error.message}`);
+      const err = error as Error;
+      console.error(err.message);
       process.exit(1);
     }
   }

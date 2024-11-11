@@ -29,7 +29,8 @@ class ConnectDatabase {
                 console.log(`MongoDB Connected`);
             }
             catch (error) {
-                console.error(`Error: ${error.message}`);
+                const err = error;
+                console.error(err.message);
                 process.exit(1);
             }
         });

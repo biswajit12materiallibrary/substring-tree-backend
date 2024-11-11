@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.rateLimiter = void 0;
 const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
 const configEnv_1 = require("../config/configEnv");
-const RATE_LIMIT = configEnv_1.config.RATE_LIMIT;
+const RATE_LIMIT = (configEnv_1.config === null || configEnv_1.config === void 0 ? void 0 : configEnv_1.config.RATE_LIMIT) || "RATE_LIMIT";
 const timeFrame = 60 * 1000; // 1 min in milliseconds
 const messageData = {
     success: false,

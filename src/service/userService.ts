@@ -45,7 +45,7 @@ export const createUser = async (req: CreateUserRequest) => {
       message: "Sign Up Successfully",
       statusCode: 200,
     };
-  } catch (err) {
+  } catch (err: any) {
     return {
       success: false,
       data: {},
@@ -82,7 +82,7 @@ export const login = async (req: loginUserRequest) => {
       message: "Login Successfully",
       statusCode: 200,
     };
-  } catch (err) {
+  } catch (err: any) {
     return {
       success: false,
       data: {},
@@ -112,7 +112,7 @@ export const substring = async (req: CustomUserRequest) => {
       message: "output get success",
       statusCode: 200,
     };
-  } catch (err) {
+  } catch (err: any) {
     return {
       success: false,
       data: {},
@@ -149,7 +149,7 @@ export const binaryTree = async (req: CustomUserRequest) => {
       message: "output get success",
       statusCode: 200,
     };
-  } catch (err) {
+  } catch (err: any) {
     console.log(err);
     return {
       success: false,
