@@ -8,8 +8,8 @@
     "test": "cross-env NODE_ENV=test nodemon",
     "dev": "cross-env NODE_ENV=development nodemon",
     "prod": "cross-env NODE_ENV=production nodemon",
-    "build": "npm install && tsc",
-    "start": "tsc && node dist/app.js",
+    "build": "yarn && tsc",
+    "start": "node dist/app.js",
     "jest": "jest"
   },
   "repository": {
